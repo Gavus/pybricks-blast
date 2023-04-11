@@ -6,7 +6,7 @@ Makes it easier to use Blast.
 
 from pybricks.hubs import InventorHub
 from pybricks.pupdevices import Motor, ColorSensor, UltrasonicSensor
-from pybricks.parameters import Color, Direction, Port, Side, Stop
+from pybricks.parameters import Direction, Port
 from pybricks.robotics import DriveBase
 
 
@@ -27,9 +27,9 @@ class Blast:
                                     wheel_diameter=self.WHEEL_DIAMETER,
                                     axle_track=self.AXLE_TRACK)
         self.drive_base.settings(
-            straight_speed=165*3/4, 
-            straight_acceleration=576/2, 
-            turn_rate=158/3, 
+            straight_speed=165*3/4,
+            straight_acceleration=576/2,
+            turn_rate=158/3,
             turn_acceleration=660)
 
         # Configure other motors and sensors
@@ -37,7 +37,7 @@ class Blast:
         self.action_motor = Motor(Port.E)
         self.color_sensor = ColorSensor(Port.B)
         self.distance_sensor = UltrasonicSensor(Port.A)
-        
+
     def calibrate_arms(self):
         """
         Calibrate arms so that the cannon sort of horizontal with the ground.
@@ -51,7 +51,7 @@ class Blast:
                 self.arm_movement_motor.stop()
                 self.arm_movement_motor.run_angle(speed=500, rotation_angle=-350, wait=True)
                 break
-    
+
     def shoot_cannon(self):
         """ Shoots one projectile from the cannon."""
         direction = 1 if self.__times_shot % 2 else -1

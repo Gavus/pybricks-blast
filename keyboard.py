@@ -51,5 +51,5 @@ def keyboard_listen(blast):
     
 
 def run_keyboard():
-    blast = Blast()      
+    blast = Blast()
     keyboard_listen(blast)

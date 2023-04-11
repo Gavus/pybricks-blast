@@ -7,9 +7,9 @@ It's simply a demo, showing what Blast can do.
 from blast import Blast
 from pybricks.tools import wait
 
+
 def run_demo():
-    # Initialize Blast
-    blast = Blast()      
+    blast = Blast()
     blast.calibrate_arms()
 
     # Demo. Replace code here.
