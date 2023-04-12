@@ -2,6 +2,8 @@
 Introduce a class Blast named after the Blast robot.
 
 Makes it easier to use Blast.
+
+DO NOT CHANGE ANY CODE BELOW.
 """
 
 from pybricks.hubs import InventorHub
@@ -11,8 +13,8 @@ from pybricks.robotics import DriveBase
 
 
 class Blast:
-    WHEEL_DIAMETER = 44
-    AXLE_TRACK = 100
+    WHEEL_DIAMETER = 55
+    AXLE_TRACK = 130
     __times_shot = 0
 
     def __init__(self):
@@ -26,9 +28,10 @@ class Blast:
                                     self.right_motor,
                                     wheel_diameter=self.WHEEL_DIAMETER,
                                     axle_track=self.AXLE_TRACK)
+
         self.drive_base.settings(
-            straight_speed=165*3/4,
-            straight_acceleration=576/2,
+            straight_speed=150,
+            straight_acceleration=100,
             turn_rate=158/3,
             turn_acceleration=660)
 
@@ -59,13 +62,13 @@ class Blast:
         self.action_motor.run_angle(speed=500, rotation_angle=-direction*75)
         self.__times_shot += 1
 
-    def raise_cannon(self, rotation_angle, wait=True):
-        """ Raise the cannon arm with specified rotation_angle. """
-        self.arm_movement_motor.run_angle(200, -1*rotation_angle, wait=wait)
+    def raise_cannon(self, angle, wait=True):
+        """ Raise the cannon arm with specified angle. """
+        self.arm_movement_motor.run_angle(100, -angle * 8, wait=wait)
 
-    def lower_cannon(self, rotation_angle, wait=True):
+    def lower_cannon(self, angle, wait=True):
         """ Lower the cannon arm with specified rotation_angle. """
-        self.arm_movement_motor.run_angle(200, rotation_angle, wait=wait)
+        self.arm_movement_motor.run_angle(100, angle * 6, wait=wait)
 
     def move_forward(self, distance, wait=True):
         """ Move blast straight forward with specified distance in mm. """
@@ -77,8 +80,16 @@ class Blast:
 
     def turn_left(self, angle, wait=True):
         """ Turn left with specified degree angle. """
+        if angle > 0:
+            angle -= 7
+        else:
+            angle += 7
         self.drive_base.turn(angle=-angle, wait=wait)
 
     def turn_right(self, angle, wait=True):
         """ Turn right with specified degree angle. """
+        if angle > 0:
+            angle -= 7
+        else:
+            angle += 7
         self.drive_base.turn(angle=angle, wait=wait)

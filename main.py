@@ -4,8 +4,8 @@ from challenge import run_challenge
 
 
 def main():
-    # run_keyboard()
     run_demo()
+    # run_keyboard()
     # run_challenge()
 
 

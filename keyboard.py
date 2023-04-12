@@ -1,20 +1,23 @@
 """
-This program is for controlling Blast using the keyboard.
+This program is for manually controlling Blast using the keyboard.
 
-q Lower cannon.
-e Raise cannon.
-f Shoot cannon.
+q -> Lower cannon.
+e -> Raise cannon.
+f -> Shoot cannon.
 
-w Move forward.
-s Move backward.
-a Turn left.
-d Turn right.
+w -> Move forward.
+s -> Move backward.
+a -> Turn left.
+d -> Turn right.
+
+DO NOT CHANGE ANY CODE BELOW.
 """
 
 from usys import stdin
 from uselect import poll
 
 from demo import Blast
+
 
 def keyboard_listen(blast):
     keyboard = poll()
@@ -28,7 +31,7 @@ def keyboard_listen(blast):
     shoot_cannon = 'f'
 
     while True:
-        # Only supports on key at a time.
+        # Only supports one key at a time.
         key = stdin.read(1)
 
         if forward in key:
@@ -40,15 +43,15 @@ def keyboard_listen(blast):
         elif turn_right in key:
             blast.turn_right(15, False)
         elif raise_cannon in key:
-            blast.raise_cannon(50, False)
+            blast.raise_cannon(25, False)
         elif lower_cannon in key:
-            blast.lower_cannon(50, False)
+            blast.lower_cannon(25, False)
         elif shoot_cannon in key:
             blast.shoot_cannon()
         else:
             blast.drive_base.stop()
             blast.arm_movement_motor.stop()
-    
+
 
 def run_keyboard():
     blast = Blast()
