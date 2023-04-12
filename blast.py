@@ -80,16 +80,8 @@ class Blast:
 
     def turn_left(self, angle, wait=True):
         """ Turn left with specified degree angle. """
-        if angle > 0:
-            angle -= 7
-        else:
-            angle += 7
-        self.drive_base.turn(angle=-angle, wait=wait)
+        self.drive_base.turn(angle=-angle+7, wait=wait)
 
     def turn_right(self, angle, wait=True):
         """ Turn right with specified degree angle. """
-        if angle > 0:
-            angle -= 7
-        else:
-            angle += 7
-        self.drive_base.turn(angle=angle, wait=wait)
+        self.drive_base.turn(angle=angle-7, wait=wait)
